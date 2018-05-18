@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigInteger;
-
 
 @Service("userService")
 @Transactional
@@ -33,6 +31,7 @@ public class UserService implements IUserService {
         int flag=0;
         try{
             flag=userMapper.updateByTelephone(user);
+            System.out.println("flag:"+flag);
         }catch (Exception e){
             logger.info(e.toString());
         }
@@ -56,6 +55,15 @@ public class UserService implements IUserService {
     }
     @Override
     public int selectUserByTelephone(long telephone){
-        return userMapper.selectUserByTelephone(telephone);
+        Integer count=userMapper.selectUserByTelephone(telephone);
+        if(count==null){
+            System.out.println("null");
+            return 0;
+        }
+        else{
+            System.out.println(count);
+            return count;
+        }
+
     }
 }

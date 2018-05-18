@@ -5,6 +5,7 @@ import com.xmu.aiad.service.IUserLoginService;
 import com.xmu.aiad.service.IUserService;
 import com.xmu.aiad.util.BaseController;
 import com.xmu.aiad.util.JsonResult;
+import com.xmu.aiad.util.MD5;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,18 +60,16 @@ public class UserLoginController extends BaseController{
 
     @RequestMapping(value = "/forgetPassword",method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult forgetPassword(HttpServletRequest request, HttpServletResponse response) {
-        long telephone=Long.parseLong(request.getParameter("telephone"));
-        String password=request.getParameter("password");
-
+    public JsonResult forgetPassword(@RequestBody User user) {
+        long telephone=user.getTelephone();
+        System.out.println("telephone："+telephone);
         //先判断用户是否存在（号码）
         int count=userService.selectUserByTelephone(telephone);
-
-        User user=new User();
-        user.setTelephone(telephone);
-        user.setPassword(password);
+        System.out.println("count:"+count);
+        //注意要加密密码
+        user.setPassword(MD5.getHashString(user.getPassword()));
+        System.out.println(user.getPassword());
         if (count>0){
-            System.out.println(count);
             boolean flag=userService.updateUser(user);
             if(flag){
                 return renderJsonSucc(null);

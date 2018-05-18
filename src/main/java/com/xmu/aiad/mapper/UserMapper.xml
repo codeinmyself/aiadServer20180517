@@ -22,9 +22,9 @@
   </select>
 
   <select id="selectUserByTelephone" resultType="java.lang.Integer">
-    select count(telephone)
-    form aiad_user
-    where telephone = #{telephone,jdbcType=BIGINT}
+    select count(*)
+    FROM aiad_user
+    where telephone = #{0}
   </select>
 
 
@@ -139,13 +139,27 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updateByTelephone" parameterType="com.xmu.aiad.model.User">
-    update aiad_user
-    set telephone = #{telephone,jdbcType=BIGINT},
+  update aiad_user
+  <set >
+    <if test="password != null" >
       password = #{password,jdbcType=VARCHAR},
+    </if>
+    <if test="email != null" >
       email = #{email,jdbcType=VARCHAR},
+    </if>
+    <if test="nickname != null" >
       nickname = #{nickname,jdbcType=VARCHAR},
+    </if>
+    <if test="avatar != null" >
       avatar = #{avatar,jdbcType=VARCHAR},
+    </if>
+    <if test="registerTime != null" >
       register_time = #{registerTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="registerIp != null" >
+      register_ip = #{registerIp,jdbcType=INTEGER},
+    </if>
+  </set>
     where telephone = #{telephone,jdbcType=BIGINT}
   </update>
 </mapper>

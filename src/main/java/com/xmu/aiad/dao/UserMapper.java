@@ -17,7 +17,7 @@ public interface UserMapper {
 
     User getUserByTelephoneAndPassword(long telephone, String password);
 
-    int updateByTelephone(User user);
+    int updateByTelephone(User record);
 
-    int selectUserByTelephone(long telephone);
+    Integer selectUserByTelephone(long telephone);
 }
