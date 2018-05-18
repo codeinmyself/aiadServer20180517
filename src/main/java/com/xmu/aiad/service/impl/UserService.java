@@ -25,7 +25,10 @@ public class UserService implements IUserService {
         return userMapper.selectByPrimaryKey(id);
     }
 
-
+    @Override
+    public User getUserByTelephone(long telephone){
+        return userMapper.getUserByTelephone(telephone);
+    }
     @Override
     public boolean updateUser(User user){
         int flag=0;

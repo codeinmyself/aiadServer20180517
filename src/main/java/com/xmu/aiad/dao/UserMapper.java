@@ -20,4 +20,6 @@ public interface UserMapper {
     int updateByTelephone(User record);
 
     Integer selectUserByTelephone(long telephone);
+
+    User getUserByTelephone(long telephone);
 }

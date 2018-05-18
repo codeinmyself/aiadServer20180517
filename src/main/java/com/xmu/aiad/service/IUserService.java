@@ -11,4 +11,6 @@ public interface IUserService {
     boolean addUser(long telephone, String password);
 
     public int selectUserByTelephone(long telephone);
+
+    public User getUserByTelephone(long telephone);
 }

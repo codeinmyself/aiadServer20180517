@@ -36,10 +36,10 @@ public class UserController extends BaseController{
         return "hello";
     }
 
-    /*@RequestMapping(value = "addUserInfo",method = RequestMethod.POST)
+    @RequestMapping(value = "/getUserByTelephone",method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult addUserInfo(HttpServletRequest, HttpServletResponse){
-
-
-    }*/
+    public User getUserByTelephone(HttpServletRequest request, HttpServletResponse response){
+        long telephone=Long.parseLong(request.getParameter("telephone"));
+        return userService.getUserByTelephone(telephone);
+    }
 }

@@ -34,6 +34,14 @@
     FROM aiad_user
     WHERE telephone=#{0} AND password=#{1}
   </select>
+
+  <select id="getUserByTelephone" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM aiad_user
+    WHERE telephone=#{0}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from aiad_user
     where user_id = #{userId,jdbcType=INTEGER}
