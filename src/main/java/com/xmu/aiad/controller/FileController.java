@@ -46,10 +46,10 @@ public class FileController extends BaseController{
     private static String[] videosName=new String[6];
     private static String[] pathsName=new String[6];
     private static final long FILE_MAX_SIZE = 1024 * 1024 * 200;
-    private static final String VIDEO_PATH = "C:\\ffmpeg-shared\\bin\\protects\\AIAD\\resourcefiles\\video\\";
-    private static final String Render_Save_Path="C:\\ffmpeg-shared\\bin\\protects\\AIAD\\userfiles\\";
-    private static final String Result_Path="C:\\ffmpeg-shared\\bin\\protects\\AIAD\\dealfiles\\deal\\";
-    private static File file = new File("C:\\Users\\Administrator\\Desktop\\classify\\caffe-master", "Classify_result.txt");
+    private static final String VIDEO_PATH = "D:\\Users\\HoHo\\Documents\\Visual Studio 2015\\ffmpeg\\ffmpeg-shared\\bin\\protects\\AIAD\\resourcefiles\\video\\";
+    private static final String Render_Save_Path="D:\\Users\\HoHo\\Documents\\Visual Studio 2015\\ffmpeg\\ffmpeg-shared\\bin\\protects\\AIAD\\userfiles\\";
+    private static final String Result_Path="D:\\Users\\HoHo\\Documents\\Visual Studio 2015\\ffmpeg\\ffmpeg-shared\\bin\\protects\\AIAD\\dealfiles\\deal\\";
+    private static File file = new File("C:\\Users\\HoHo\\Desktop\\classify\\caffe-master", "Classify_result.txt");
 
     private static JSONObject jsonObject = new JSONObject();
 
@@ -454,7 +454,7 @@ public class FileController extends BaseController{
      */
     public void randomPickVideo(String style) {
         int[] videono = new int[6];
-        videono = randomCommon(1, 40, 6);
+        videono = randomCommon(1, 32, 6);
 
         for (int i = 0; i < 6; i++) {
             String videoPath = VIDEO_PATH + style;//视频路径
