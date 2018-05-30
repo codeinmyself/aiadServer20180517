@@ -62,7 +62,7 @@ public class FileController extends BaseController{
             file.delete();
         }
         System.out.println("upload image ");
-        if (!fileHelper(request,"C:\\Users\\Administrator\\Desktop\\classify\\caffe-master\\examples\\images\\"))
+        if (!fileHelper(request,"C:\\Users\\HoHo\\Desktop\\classify\\caffe-master\\examples\\images\\"))
             return renderJsonError(null);
 
         runbat();
@@ -95,7 +95,7 @@ public class FileController extends BaseController{
      * 调用bat文件，进行图像识别
      */
     private void runbat() {
-        String cmd = "cmd /c start C:\\Users\\Administrator\\Desktop\\classify\\caffe-master\\classify.bat";
+        String cmd = "cmd /c start C:\\Users\\HoHo\\Desktop\\classify\\caffe-master\\classify.bat";
         Process ps = null;
         try {
             ps = Runtime.getRuntime().exec(cmd);
